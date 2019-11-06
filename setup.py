@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="SonaWrap",
-    version="0.0.1",
+    version="0.0.2",
     author="David Merz",
     author_email="david@merz.dev",
     description="A minimal python wrapper for the Sona systems mobile api",
