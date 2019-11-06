@@ -11,7 +11,7 @@ setuptools.setup(
     description="A minimal python wrapper for the Sona systems mobile api",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/DavidM42/SonaWrap",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
