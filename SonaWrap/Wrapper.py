@@ -33,10 +33,11 @@ class SonaWrap:
         r = requests.post(url)
         # r_json = r.json()
 
-        print(r.text)
+        # print(r.text)
         #TODO schema
         #TODO better way to invalidate errored
         r = self._request_invalidator(r)
+        return r
         #TODO return type
 
     def _login_page(self):
@@ -54,7 +55,7 @@ class SonaWrap:
         url = self._host + "/custom/customlogo.png"
 
         r = requests.get(url,stream=True)
-        print(r.status_code)
+        # print(r.status_code)
         with open('logo.png', 'wb') as out_file:
             shutil.copyfileobj(r.raw, out_file)
         del r
@@ -96,8 +97,6 @@ class SonaWrap:
         schema = ScheduleSchema()
         resultObj = schema.load(result)
 
-        print(resultObj["display_overall_credits"])
-        print(resultObj)
         return resultObj
 
 
@@ -114,7 +113,6 @@ class SonaWrap:
         schema = MainMenuInfoSchema()
         resultObj = schema.load(result)
 
-        print(resultObj)
         return resultObj
 
 
@@ -131,7 +129,6 @@ class SonaWrap:
         schema = StudyPageSchema()
         resultObj = schema.load(result)
 
-        print(resultObj)
         return resultObj
 
     def study_info(self, experiment_id:int) -> StudyInfoSchema:
@@ -148,5 +145,4 @@ class SonaWrap:
         schema = StudyInfoSchema()
         resultObj = schema.load(result)
 
-        print(resultObj)
         return resultObj

@@ -1,11 +1,12 @@
 import setuptools
+from version import version_number
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="SonaWrap",
-    version="0.0.2",
+    version=version_number,
     author="David Merz",
     author_email="david@merz.dev",
     description="A minimal python wrapper for the Sona systems mobile api",
