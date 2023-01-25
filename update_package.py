@@ -7,9 +7,10 @@ from version import version_number
 # except ImportError:
 #     main(['install', 'twine'])
 
+input("Make sure you commented in the dev dependancies in requirements.txt and installed them. Press enter")
 print("Current version is " + version_number)
 
-input("Update version number in setup.py and press enter")
+input("Did you update the version number in version.py. If so press enter")
 
 os.system('python3 setup.py sdist bdist_wheel')
 os.system('python3 -m twine upload dist/SonaWrap-' + version_number + '*')
