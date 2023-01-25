@@ -21,6 +21,7 @@ class SonaWrap:
 
     def _request_invalidator(self, r):
         if r.status_code != 200 or r.json()["ErrorCode"] != 0:
+            print(r.text)
             print(r.json()["Errors"])
             print(r.json())
             #TODO own exception here
@@ -42,7 +43,7 @@ class SonaWrap:
 
     def _login_page(self):
         #TODO export cause unused
-        url = self._host + "/services/SonaMobileAPI.svc/GetLoginPageInfo"
+        url = self._host + "/services/SonaMobileAPI.svc/GetLoginPageInfoV2"
         r = requests.post(url)
         r = self._request_invalidator(r)
         #TODO schema
@@ -64,20 +65,20 @@ class SonaWrap:
     def _authenticate(self, username:str, password:str) -> str: #TODO return type token given here
         # r_login_page = self._login_page()
 
-        url = self._host + "/services/SonaMobileAPI.svc/Authenticate"
+        url = self._host + "/services/SonaMobileAPI.svc/AuthenticateV2"
 
         body = {
             "p_username": username,
             "p_password": password,
             "p_language_pref":"DE",
-            "p_mobile_version":"2.0"
+            "p_mobile_version":"2.8.8"
         }
 
         print("Authenticasting")
         r = requests.post(url, json=body)
 
         #TODO own authorize exception
-        token = self._request_invalidator(r)
+        token = self._request_invalidator(r)['sona_auth']
 
         # print(r.text)
         return token
